@@ -1,7 +1,4 @@
-/** @jsx React.DOM */
-
 var GithubEvent = React.createClass({
-
   render: function() {
     return (
       <li className="githubEvent">
@@ -9,13 +6,10 @@ var GithubEvent = React.createClass({
       </li>
     );
   }
-
 });
 
 var GithubEventList = React.createClass({
-
   render: function() {
-
     var eventNodes = this.props.githubEvents.map(function(githubEvent, index) {
       return (
         <GithubEvent eventType={githubEvent.type} repo={githubEvent.repo.name} key={index} />
@@ -28,7 +22,6 @@ var GithubEventList = React.createClass({
       </ul>
       );
   }
-
 });
 
 var GithubEventListBox = React.createClass({
@@ -38,7 +31,6 @@ var GithubEventListBox = React.createClass({
   componentDidMount: function () {
     this.loadEventsFromGitHub();
   },
-
   loadEventsFromGitHub: function () {
     $.ajax({
       url: this.props.url,
@@ -51,7 +43,6 @@ var GithubEventListBox = React.createClass({
       }.bind(this)
     });
   },
-
   render: function () {
     return (
       <div className="githubEventListBox">
