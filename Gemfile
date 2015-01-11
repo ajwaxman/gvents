@@ -42,5 +42,5 @@ group :development, :test do
 
   gem 'database_cleaner',      '1.3.0'
 
-  gem 'spring'
+  gem 'spring',                '1.2.0'
 end
