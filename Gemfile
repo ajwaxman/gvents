@@ -16,6 +16,7 @@ gem 'rails_12factor',  '0.0.3'
 gem 'react-rails',     '0.12.2.0'
 gem 'turbolinks',      '2.5.3'
 gem 'uglifier',     '>= 1.3.0'
+gem 'bootstrap-sass', '>= 3.2'
 
 #####################
 # Database / Server #
