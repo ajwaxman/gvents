@@ -1,14 +1,17 @@
 <div class="container">
   <div class="row row-centered vcenter">
     <h3>Welcome to Gvents!</h3>
-    <form onsubmit="location.href=window.location.href + document.getElementById('myInput').value; return false;" class="form-horizontal">
+
+    <%= form_tag event_path, method: :get do %>
       <div class="form-group">
         <div class="col-sm-4 col-centered">
-          <input type="text" id="myInput" class="form-control" placeholder="Enter your GitHub username" />
+          <%= text_field_tag 'username', nil, class: 'form-control', id: 'myInput',
+                              placeholder: 'Enter your GitHub Username' %>
         </div>
       </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+
+      <%= submit_tag 'Submit', class: 'btn btn-default', name: nil %>
+    <% end %>
   </div>
 </div>
 
