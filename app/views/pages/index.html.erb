@@ -2,16 +2,7 @@
   <div class="row row-centered vcenter">
     <h3>Welcome to Gvents!</h3>
 
-    <%= form_tag event_path, method: :get do %>
-      <div class="form-group">
-        <div class="col-sm-4 col-centered">
-          <%= text_field_tag 'username', nil, class: 'form-control', id: 'myInput',
-                              placeholder: 'Enter your GitHub Username' %>
-        </div>
-      </div>
-
-      <%= submit_tag 'Submit', class: 'btn btn-default', name: nil %>
-    <% end %>
+    <%= render 'shared/events/username_submit_form' %>
   </div>
 </div>
 
