@@ -1,26 +1,36 @@
-// Event Class
+// Create Event class and prototype.
 function Event() {
-  this.repo = ''
-  this.type = ''
+  this.repo = '';
+  this.type = '';
 }
 
-Event.prototype.parseJSON = function(json) {
-  this.repo = json.repo.name
-  this.type = json.type
+Event.prototype = {
+  parseJSON: function(json) {
+    this.repo = json.repo.name;
+    this.type = json.type;
+  }
 }
 
-// Create Speific Events
+// Create PushEvent class, which inherits from Event class.
 function PushEvent() {
-  Event.call(this); // Initialize varaibles from parent class.
-  this.commits = 0; // Event specific fields.
+  Event.call(this); // Call constructor from parent class.
+
+  this.commits = 0; // Initialize child specific attributes.
 }
 
+// Create child prototype from parent prototype.
 PushEvent.prototype = Object.create(Event.prototype);
+// Child prototype's constructor should be it's own.
 PushEvent.prototype.constructor = PushEvent;
 
-PushEvent.prototype.parseJSON = function(json){
-  Event.prototype.parseJSON.call(this,json);
-  this.commits = json.payload.size;
+// Define child prototype.
+PushEvent.prototype = {
+  parseJSON: function(json) {
+    // Parse JSON attributes from parent class.
+    Event.prototype.parseJSON.call(this,json);
+    // Child specific JSON parsing.
+    this.commits = json.payload.size;
+  }
 }
 
 var get_json = function(callback) {
@@ -36,7 +46,7 @@ var get_json = function(callback) {
 var parse_json = function(response) {
   events = []
   push_event = new PushEvent();
-  push_event.parseJSON(response[1]);
+  push_event.parseJSON(response[2]);
   events.push(push_event);
   console.log(events);
 }
